@@ -1,0 +1,24 @@
+.summary {
+  text-align: center;
+  max-width: 45rem;
+  width: 90%;
+  margin: auto;
+  margin-top: 2rem; /* Adjust margin-top for better spacing */
+  position: relative;
+  background-color: #f3f3f3; /* Light gray background */
+  color: #333; /* Dark text color */
+  border-radius: 14px;
+  padding: 2rem; /* Increase padding for better spacing */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+}
+
+.summary h2 {
+  font-size: 2.5rem; /* Increase font size for the heading */
+  margin-top: 0;
+  color: #333; /* Darker heading color */
+}
+
+.summary p {
+  font-size: 1.1rem; /* Increase font size for paragraphs */
+  margin-bottom: 1.5rem; /* Add margin bottom for better spacing between paragraphs */
+}

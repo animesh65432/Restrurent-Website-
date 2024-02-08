@@ -1,0 +1,12 @@
+.card {
+  padding: 1.5rem; /* Increase padding for better spacing */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer and more pronounced shadow */
+  border-radius: 16px; /* Slightly larger border radius for a softer look */
+  background-color: #fff; /* White background */
+  transition: box-shadow 0.3s, transform 0.3s; /* Add smooth transition for shadow and transform */
+}
+
+.card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Increase shadow on hover for a lifted effect */
+  transform: translateY(-5px); /* Add slight elevation effect on hover */
+}
