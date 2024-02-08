@@ -5,7 +5,7 @@ import Input from "./Input";
 const MealitemsFrom = () => {
   return (
     <>
-      <from className={classes.form}>
+      <form className={classes.form}>
         <Input
           label="Amount"
           input={{
@@ -14,11 +14,11 @@ const MealitemsFrom = () => {
             min: "1",
             max: "5",
             step: "1",
-            defaultvalue: "1",
+            defaultValue: "1",
           }}
         />
         <button>+ Add</button>
-      </from>
+      </form>
     </>
   );
 };
