@@ -1,19 +1,20 @@
 import React from "react";
-import classes from "./Header.module.css";
-import { HeaderImages } from "../../Images/Images";
-import HeaderCartbuttom from "./HeaderCartbuttom";
 
-const Header = (props) => {
+import mealsImg from "../../assets/meals.jpg";
+import classses from "./Header.module.css";
+import HeaderCartBtn from "./HeaderCartBtn";
+
+const Header = ({ onCartToggle }) => {
   return (
-    <React.Fragment>
-      <header className={classes.header}>
-        <h1>React Meals</h1>
-        <HeaderCartbuttom onclick={props.onshowCart} />
+    <>
+      <header className={classses.header}>
+        <h1>Meals </h1>
+        <HeaderCartBtn onClick={onCartToggle} />
       </header>
-      <div className={classes["main-image"]}>
-        <img src={HeaderImages} alt="Headerimages"></img>
+      <div className={classses["banner-wrap"]}>
+        <img src={mealsImg} alt="" />
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

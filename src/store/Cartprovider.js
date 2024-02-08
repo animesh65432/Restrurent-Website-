@@ -1,44 +1,54 @@
-import { useReducer } from "react";
-import { CartContext } from "./Cart-context";
+import { useState } from "react";
+import CartContext from "./cart-context";
+// import { DUMMY_CART_ITEMS } from "../DUMMY_DATA";
 
-const defaultcartsate = {
-  items: [],
-  totalamount: 0,
-};
+const CartProvider = (props) => {
+  const [items, setItems] = useState([]);
 
-const cartreucer = (state, action) => {
-  if (action.type == "add") {
-    const upadateitems = state.items.concat(action.item);
-    const upadatetotalamount =
-      state.totalamount + action.item.price * action.item.amount;
-    return {
-      items: upadateitems,
-      totalamount: upadatetotalamount,
-    };
-  }
-  return defaultcartsate;
-};
+  const addToCartHandler = (item) => {
+    let itemIdx = items.findIndex((itm) => itm.id === item.id);
+    let newItem = [...items];
 
-const Cartprovider = (props) => {
-  const [cartlstate, dispatchcart] = useReducer(cartreucer, defaultcartsate);
-  const additemhandler = (item) => {
-    dispatchcart({ type: "add", item: item });
+    // console.log("item >>>>>", item);
+
+    if (itemIdx >= 0) {
+      //item exist
+      // console.log(typeof newItem[itemIdx].quantity);
+      newItem[itemIdx].quantity += item.quantity;
+    } else {
+      // console.log(item);
+      newItem.push(item);
+    }
+
+    setItems(newItem);
   };
-  const removeitemhandler = (id) => {
-    dispatchcart({ type: "remove", id: id });
+
+  const removeFromCartHandler = (id) => {
+    const itemIdx = items.findIndex((itm) => itm.id === id);
+
+    let newItems = [...items];
+    const item = items[itemIdx].quantity;
+    if (item > 1) {
+      newItems[itemIdx].quantity--;
+    } else {
+      newItems = newItems.filter((itm) => itm.id !== id);
+    }
+
+    setItems(newItems);
   };
-  const cartcontext = {
-    items: cartlstate.items,
-    totalamount: cartlstate.totalamount,
-    additem: additemhandler,
-    removeitem: removeitemhandler,
+
+  const cartContext = {
+    items: items,
+
+    addItem: addToCartHandler,
+    removeItem: removeFromCartHandler,
   };
 
   return (
-    <CartContext.Provider value={{ cartcontext }}>
+    <CartContext.Provider value={cartContext}>
       {props.children}
     </CartContext.Provider>
   );
 };
 
-export default Cartprovider;
+export default CartProvider;

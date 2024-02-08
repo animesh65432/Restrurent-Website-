@@ -1,3 +1,11 @@
-import React from "react";
+import { createContext } from "react";
 
-export const CartContext = React.createContext();
+const CartContext = createContext({
+  // this is just skilleton helps in auto complete
+  items: [],
+  totalAmount: 0,
+  addItem: (item) => {},
+  removeItem: (id) => {},
+});
+
+export default CartContext;
